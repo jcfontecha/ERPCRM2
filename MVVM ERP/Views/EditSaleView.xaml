@@ -1,0 +1,167 @@
+﻿<Window x:Class="MVVM_ERP.Views.EditSaleView"
+        x:Name="Window"
+        WindowState="Maximized"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM_ERP.Views"
+        xmlns:vm="clr-namespace:MVVM_ERP.ViewModels"
+        mc:Ignorable="d"
+        Title="Edit Sale Details" Height="700" Width="750">
+    <Window.Resources>
+        <vm:EditSaleViewModel x:Key="editSaleViewModel" />
+    </Window.Resources>
+    <Grid x:Name="mainGrid" DataContext="{StaticResource editSaleViewModel}" MaxWidth="850">
+        <Grid.Resources>
+            <CollectionViewSource x:Key="productsViewSource" Source="{Binding Products}" />
+            <CollectionViewSource x:Key="employeesViewSource" Source="{Binding Employees}" />
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="1" Margin="8" Header="Edit purchase">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="184" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <GroupBox Header="Edit sale details" Margin="8" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.3*" />
+                            <ColumnDefinition Width="0.7*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="28" />
+                            <RowDefinition Height="28" />
+                            <RowDefinition Height="28" />
+                            <RowDefinition Height="28" />
+                            <RowDefinition Height="28"/>
+                            <RowDefinition Height="28"/>
+                            <RowDefinition Height="28"/>
+                        </Grid.RowDefinitions>
+                        <!-- Row 0 -->
+                        <Label Grid.Row="0" Content="Employee:" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
+                               Margin="2,0" />
+                        <ComboBox Grid.Row="0" Grid.Column="1" Margin="0,2"
+                                  ItemsSource="{Binding Employees}" 
+                                  DisplayMemberPath="username"
+                                  SelectedItem="{Binding SaleOrder.Employee}" />
+                        <!-- Row 1 -->
+                        <Label Grid.Row="1" Content="Date:" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
+                               Margin="2,0" />
+                        <DatePicker Grid.Row="1" Grid.Column="1" x:Name="expirationDateDatePicker" Margin="0,2" VerticalContentAlignment="Center"
+                                    SelectedDate="{Binding SaleOrder.date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                        <!-- Row 4 -->
+                        <Label Grid.Row="2" Content="Amount:&#xD;&#xA;" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
+                               Margin="2,0" />
+                        <TextBox Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" IsReadOnly="True"
+                                 Text="{Binding Price, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="0,2"/>
+                        <!-- Row 5 -->
+                        <Label Grid.Row="3" Content="Discount:" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
+                               Margin="2,0" />
+                        <TextBox Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center"
+                                 Text="{Binding Discount, UpdateSourceTrigger=PropertyChanged}" Margin="0,2" />
+                        <!-- Total -->
+                        <Label Grid.Row="4" Content="Total:" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
+                               Margin="2,0" />
+                        <TextBox Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Center"
+                                 Text="{Binding Total}" Margin="0,2" IsReadOnly="True" />
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="Invoice" Margin="8" Grid.Column="1" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.3*" />
+                            <ColumnDefinition Width="0.7*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="28" />
+                            <RowDefinition Height="28" />
+                            <RowDefinition Height="28"/>
+                            <RowDefinition Height="28"/>
+                        </Grid.RowDefinitions>
+                        <!-- Row 0 -->
+                        <Label Grid.Row="0" Content="Client:" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
+                               Margin="2,0" />
+                        <ComboBox Grid.Row="0" Grid.Column="1" Margin="0,2"
+                                  ItemsSource="{Binding Clients}" 
+                                  DisplayMemberPath="lastName"
+                                  SelectedItem="{Binding SaleOrder.Invoice.Client}" />
+                        <!-- Row 1 -->
+                        <!-- Row 4 -->
+                        <Label Grid.Row="1" Content="Tax:" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
+                               Margin="2,0" />
+                        <TextBox Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" IsReadOnly="True"
+                                 Text="{Binding Tax}" Margin="0,2"/>
+                        <!-- Row 5 -->
+                        <!-- Total -->
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Header="Edit sold items" Grid.Row="1" Margin="8,8,8,8.5" Grid.ColumnSpan="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="40"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <DataGrid Grid.Row="0" AutoGenerateColumns="False" EnableRowVirtualization="True"
+                                  ItemsSource="{Binding StockProducts}" Margin="5" SelectedItem="{Binding SelectedStockProduct}"
+                                  IsReadOnly="True" RowHeaderWidth="0">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn x:Name="keyColumn"
+                                                    Binding="{Binding Product.key, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                                                    Header="Key" Width="0.2*"/>
+                                <DataGridTextColumn x:Name="componentColumn" Header="Description" Width="*"
+                                             Binding="{Binding Product.description}" />
+                                <DataGridTextColumn Binding="{Binding Product.unitPrice}" Header="Unit Price" Width="SizeToHeader"/>
+                                <DataGridTextColumn x:Name="warehouseColumn" Header="Warehouse" Width="SizeToHeader"
+                                             Binding="{Binding warehouse}"/>
+                                <DataGridTextColumn x:Name="shelfColumn" Binding="{Binding shelf}" Header="Shelf" Width="SizeToHeader"/>
+                                <DataGridTextColumn x:Name="drawerColumn" Binding="{Binding drawer}" Header="Drawer" Width="SizeToHeader"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0,5">
+                            <Separator Visibility="Hidden" Width="5" />
+                            <Button Content="Add" Width="90" Command="{Binding AddStockProductCommand}"/>
+                            <Separator Visibility="Hidden" Width="5" />
+                            <Button Content="Remove" Width="90" Command="{Binding RemoveStockProductCommand}"/>
+                        </StackPanel>
+                        <DataGrid Grid.Row="2" AutoGenerateColumns="False" EnableRowVirtualization="True"
+                                  ItemsSource="{Binding SaleStockProducts}" Margin="5"
+                                  SelectedItem="{Binding SelectedSaleStockProduct}" IsReadOnly="True"
+                                  RowDetailsVisibilityMode="VisibleWhenSelected" RowHeaderWidth="0" CanUserAddRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Product.key}"
+                                                    Header="Key" Width="0.2*"/>
+                                <DataGridTextColumn Header="Description" Width="*"
+                                                    Binding="{Binding Product.description}" />
+                                <DataGridTextColumn Binding="{Binding Product.unitPrice}" Header="Unit Price" Width="SizeToHeader"/>
+                                <DataGridTextColumn Header="Warehouse" Width="SizeToHeader"
+                                                    Binding="{Binding warehouse}"/>
+                                <DataGridTextColumn Binding="{Binding shelf}" Header="Shelf" Width="SizeToHeader"/>
+                                <DataGridTextColumn Binding="{Binding drawer}" Header="Drawer" Width="SizeToHeader"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" FlowDirection="RightToLeft" Margin="10,0">
+            <Button Content="Save" Command="{Binding SaveChangesCommand}" Width="90"
+                    CommandParameter="{Binding ElementName=Window}"/>
+            <Separator Width="5" Visibility="Hidden" />
+            <Button Content="Close" Command="{Binding CloseCommand}" Width="90" 
+                    CommandParameter="{Binding ElementName=Window}"/>
+        </StackPanel>
+    </Grid>
+</Window>

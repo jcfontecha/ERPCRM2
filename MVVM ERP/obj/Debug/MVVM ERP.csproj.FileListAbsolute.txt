@@ -1,0 +1,60 @@
+c:\users\macbook jc\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\bin\Debug\MVVM ERP.exe.config
+c:\Users\MacBook JC\Documents\Visual Studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\MVVM ERP.csprojResolveAssemblyReference.cache
+c:\Users\MacBook JC\Documents\Visual Studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\MainWindow.g.cs
+c:\Users\MacBook JC\Documents\Visual Studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\App.g.cs
+c:\Users\MacBook JC\Documents\Visual Studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\MVVM ERP_Content.g.cs
+c:\Users\MacBook JC\Documents\Visual Studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\MVVM ERP_MarkupCompile.cache
+c:\Users\MacBook JC\Documents\Visual Studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\MVVM ERP_MarkupCompile.lref
+c:\Users\MacBook JC\Documents\Visual Studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\GeneratedInternalTypeHelper.g.cs
+c:\Users\MacBook JC\Documents\Visual Studio 2015\Projects\MVVM ERP\MVVM ERP\bin\Debug\MVVM ERP.exe
+c:\Users\MacBook JC\Documents\Visual Studio 2015\Projects\MVVM ERP\MVVM ERP\bin\Debug\MVVM ERP.pdb
+c:\Users\MacBook JC\Documents\Visual Studio 2015\Projects\MVVM ERP\MVVM ERP\bin\Debug\EntityFramework.dll
+c:\Users\MacBook JC\Documents\Visual Studio 2015\Projects\MVVM ERP\MVVM ERP\bin\Debug\EntityFramework.xml
+c:\Users\MacBook JC\Documents\Visual Studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\MainWindow.baml
+c:\Users\MacBook JC\Documents\Visual Studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\MVVM ERP.g.resources
+c:\Users\MacBook JC\Documents\Visual Studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\MVVM_ERP.Properties.Resources.resources
+c:\Users\MacBook JC\Documents\Visual Studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\MVVM ERP.csproj.GenerateResource.Cache
+c:\Users\MacBook JC\Documents\Visual Studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\MVVM ERP.exe
+c:\Users\MacBook JC\Documents\Visual Studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\MVVM ERP.pdb
+c:\Users\MacBook JC\Documents\Visual Studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EditCountries.g.cs
+c:\Users\MacBook JC\Documents\Visual Studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EditCountries.baml
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\ClientsView.g.cs
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\ClientsView.baml
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EditClientView.g.cs
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EditClientView.baml
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\ProductsView.g.cs
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\ProductsView.baml
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EditProductView.g.cs
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EditProductView.baml
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\ComponentsView.g.cs
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EditComponentView.g.cs
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\ComponentsView.baml
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EditComponentView.baml
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\SchoolsView.g.cs
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\SchoolsView.baml
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EditEmployeeView.g.cs
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EmployeesView.g.cs
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EditEmployeeView.baml
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EmployeesView.baml
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\ExpensesView.g.cs
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\ExpensesView.baml
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EditExpenseView.g.cs
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EditExpenseView.baml
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EditPurchaseView.g.cs
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EditPurchaseView.baml
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\InventoryView.g.cs
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\InventoryView.baml
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\SelectComponentView.g.cs
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\SelectComponentView.baml
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EditStockProductView.g.cs
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EditStockProductView.baml
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\SalesView.g.cs
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\SalesView.baml
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EditSaleView.g.cs
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EditSaleView.baml
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\bin\Debug\MathConverter.dll
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\bin\Debug\MathConverter.pdb
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\CRMView.g.cs
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\CRMView.baml
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EmailView.g.cs
+C:\Users\MacBook JC\documents\visual studio 2015\Projects\MVVM ERP\MVVM ERP\obj\Debug\Views\EmailView.baml

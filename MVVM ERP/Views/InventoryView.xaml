@@ -1,0 +1,184 @@
+﻿<Window x:Class="MVVM_ERP.Views.InventoryView"
+        WindowState="Maximized"
+        x:Name="Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM_ERP.Views"
+        xmlns:vm="clr-namespace:MVVM_ERP.ViewModels"
+        mc:Ignorable="d"
+        Title="InventoryView" Height="600" Width="700">
+    <Window.Resources>
+        <vm:InventoryViewModel x:Key="inventoryViewModel" />
+    </Window.Resources>
+    <Grid x:Name="mainGrid" DataContext="{StaticResource inventoryViewModel}">
+        <Grid.Resources>
+            <CollectionViewSource x:Key="stockComponentsCollectionViewSource" Source="{Binding StockComponents}" />
+            <CollectionViewSource x:Key="stockProductsCollectionViewSource" Source="{Binding StockProducts}" />
+            <CollectionViewSource x:Key="productsCollectionViewSource" Source="{Binding Products}" />
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="1" Margin="10" MaxWidth="800">
+            <TabItem Header="Components">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="200"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" FlowDirection="RightToLeft" Margin="10,3">
+                            <TextBox Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Left"
+                         VerticalContentAlignment="Center" Width="120" FlowDirection="LeftToRight"/>
+                            <Label Content="Search:" FlowDirection="LeftToRight"/>
+                        </StackPanel>
+
+                    </Grid>
+
+                    <DataGrid Grid.Row="1" Margin="10" AutoGenerateColumns="False" RowHeaderWidth="0" 
+                  ItemsSource="{Binding StockComponentsView}" IsReadOnly="True" SelectedItem="{Binding SelectedStockComponent}" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Key" Width="0.2*" Binding="{Binding Component.key}"/>
+                            <DataGridTextColumn Header="Description" Width="0.5*"
+                                            Binding="{Binding Component.description}"/>
+                            <DataGridTextColumn Header="Vendor" Width="0.25*"
+                                            Binding="{Binding Vendor.name}"/>
+                            <DataGridTextColumn Header="Expiration Date" Width="0.25*"
+                                            Binding="{Binding expirationDate, StringFormat=d}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <GroupBox Header="Details" Margin="5" Grid.Row="4" DataContext="{Binding SelectedStockComponent}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.3*" />
+                                <ColumnDefinition Width="0.7*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25" />
+                                <RowDefinition Height="25" />
+                                <RowDefinition Height="25" />
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <!--Name-->
+                            <Label Grid.Row="0" Content="Key:" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+                            <Label Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" Content="{Binding Component.key}" />
+                            <!--Last Name-->
+                            <!--Country-->
+                            <Label Grid.Row="1" Content="Description:" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+                            <Label Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" Content="{Binding Component.description}" />
+                            <!--City-->
+                            <Label Grid.Row="2" Content="Vendor:" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+                            <Label Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" Content="{Binding Vendor.name}" />
+                            <!--Warehouse-->
+                            <Label Grid.Row="3" Content="Warehouse:" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+                            <Label Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" Content="{Binding warehouse}" />
+                            <!--Warehouse-->
+                            <Label Grid.Row="4" Content="Shelf:" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+                            <Label Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Center" Content="{Binding shelf}" />
+                            <!--Drawer-->
+                            <Label Grid.Row="5" Content="Drawer:" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+                            <Label Grid.Row="5" Grid.Column="1" VerticalContentAlignment="Center" Content="{Binding drawer}" />
+                            <!--School-->
+                        </Grid>
+                    </GroupBox>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Products">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="180" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0 ">
+                            <Separator Width="10" Visibility="Hidden" />
+                            <Label Content="Product:" />
+                            <ComboBox Width="80" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}"
+                                  DisplayMemberPath="key"/>
+                            <Separator Visibility="Hidden" Width="10" />
+                            <Button Content="Craft new" Width="70" Command="{Binding CreateNewProductCommand}"/>
+                            <Separator Width="10" Visibility="Hidden" />
+                            <Button Content="Edit" Width="70" Command="{Binding EditStockProductCommand}"/>
+                        </StackPanel>
+                    </Grid>
+                    <DataGrid Grid.Row="1" Margin="10" AutoGenerateColumns="False" RowHeaderWidth="0" 
+                              ItemsSource="{Binding StockProductsView}" IsReadOnly="True" SelectedItem="{Binding SelectedStockProduct}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Key" Width="0.2*" Binding="{Binding Product.key}"/>
+                            <DataGridTextColumn Header="Description" Width="0.5*"
+                                                Binding="{Binding Product.description}"/>
+                            <DataGridTextColumn Header="Expiration Date" Width="0.25*"
+                                                Binding="{Binding expirationDate, StringFormat=d}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <GroupBox Header="Details" Margin="5" Grid.Row="4" DataContext="{Binding SelectedStockProduct}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.3*" />
+                                <ColumnDefinition Width="0.7*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25" />
+                                <RowDefinition Height="25" />
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <!--Name-->
+                            <Label Grid.Row="0" Content="Key:" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+                            <Label Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" Content="{Binding Product.key}" />
+                            <!--Last Name-->
+                            <!--Country-->
+                            <Label Grid.Row="1" Content="Description:" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+                            <Label Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" Content="{Binding Product.description}" />
+                            <!--City-->
+                            <!--Warehouse-->
+                            <Label Grid.Row="2" Content="Warehouse:" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+                            <Label Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" Content="{Binding warehouse}" />
+                            <!--Warehouse-->
+                            <Label Grid.Row="3" Content="Shelf:" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+                            <Label Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" Content="{Binding shelf}" />
+                            <!--Drawer-->
+                            <Label Grid.Row="4" Content="Drawer:" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+                            <Label Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Center" Content="{Binding drawer}" />
+                            <!--School-->
+                        </Grid>
+                    </GroupBox>
+
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" FlowDirection="RightToLeft" Margin="10,0">
+            <Button Content="Save" Command="{Binding SaveChangesCommand}" Width="90"
+                    CommandParameter="{Binding ElementName=Window}"/>
+            <Separator Width="5" Visibility="Hidden" />
+            <Button Content="Close" Command="{Binding CloseCommand}" Width="90" 
+                    CommandParameter="{Binding ElementName=Window}"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ERPModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="idAddress" />
+    </Key>
+    <Property Name="idAddress" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="line1" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="line2" Type="varchar" MaxLength="45" />
+    <Property Name="postalCode" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="city" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="idCountry" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="idClient" />
+    </Key>
+    <Property Name="idClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="lastName" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="idAddress" Type="int" />
+    <Property Name="email" Type="varchar" MaxLength="55" />
+    <Property Name="birthDate" Type="datetime" Precision="0" />
+    <Property Name="idSchool" Type="int" />
+  </EntityType>
+  <EntityType Name="Component">
+    <Key>
+      <PropertyRef Name="idComponent" />
+    </Key>
+    <Property Name="idComponent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="key" Type="varchar" MaxLength="45" />
+    <Property Name="description" Type="varchar" MaxLength="65" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="idCountry" />
+    </Key>
+    <Property Name="idCountry" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="85" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="idEmployee" />
+    </Key>
+    <Property Name="idEmployee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="45" />
+    <Property Name="lastName" Type="varchar" MaxLength="45" />
+    <Property Name="idAddress" Type="int" />
+    <Property Name="email" Type="varchar" MaxLength="45" />
+    <Property Name="username" Type="varchar" MaxLength="45" />
+    <Property Name="passw" Type="varchar" MaxLength="45" />
+    <Property Name="salary" Type="float" />
+  </EntityType>
+  <EntityType Name="Expense">
+    <Key>
+      <PropertyRef Name="idExpense" />
+    </Key>
+    <Property Name="idExpense" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idEmployee" Type="int" Nullable="false" />
+    <Property Name="amount" Type="float" Nullable="false" />
+    <Property Name="date" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="concept" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Invoice">
+    <Key>
+      <PropertyRef Name="idInvoice" />
+    </Key>
+    <Property Name="idInvoice" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idClient" Type="int" Nullable="false" />
+    <Property Name="tax" Type="float" Nullable="false" />
+    <Property Name="finalPrice" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="idProduct" />
+    </Key>
+    <Property Name="idProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="key" Type="varchar" MaxLength="45" />
+    <Property Name="description" Type="varchar" MaxLength="65" />
+    <Property Name="unitPrice" Type="float" />
+  </EntityType>
+  <EntityType Name="ProductComponents">
+    <Key>
+      <PropertyRef Name="idProduct" />
+      <PropertyRef Name="idComponent" />
+    </Key>
+    <Property Name="idProduct" Type="int" Nullable="false" />
+    <Property Name="idComponent" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SaleOrder">
+    <Key>
+      <PropertyRef Name="idSaleOrder" />
+    </Key>
+    <Property Name="idSaleOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idInvoice" Type="int" Nullable="false" />
+    <Property Name="idEmployee" Type="int" Nullable="false" />
+    <Property Name="date" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="price" Type="float" Nullable="false" />
+    <Property Name="discount" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="School">
+    <Key>
+      <PropertyRef Name="idSchool" />
+    </Key>
+    <Property Name="idSchool" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="85" />
+    <Property Name="idCountry" Type="int" />
+  </EntityType>
+  <EntityType Name="StockComponent">
+    <Key>
+      <PropertyRef Name="idStockComponent" />
+    </Key>
+    <Property Name="idStockComponent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idComponent" Type="int" Nullable="false" />
+    <Property Name="idExpense" Type="int" Nullable="false" />
+    <Property Name="idVendor" Type="int" Nullable="false" />
+    <Property Name="idStockProduct" Type="int" />
+    <Property Name="warehouse" Type="int" Nullable="false" />
+    <Property Name="shelf" Type="int" Nullable="false" />
+    <Property Name="drawer" Type="int" Nullable="false" />
+    <Property Name="expirationDate" Type="datetime" Precision="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StockProduct">
+    <Key>
+      <PropertyRef Name="idStockProduct" />
+    </Key>
+    <Property Name="idStockProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idProduct" Type="int" Nullable="false" />
+    <Property Name="idSaleOrder" Type="int" />
+    <Property Name="expirationDate" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="warehouse" Type="int" Nullable="false" />
+    <Property Name="shelf" Type="int" Nullable="false" />
+    <Property Name="drawer" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vendor">
+    <Key>
+      <PropertyRef Name="idVendor" />
+    </Key>
+    <Property Name="idVendor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idAddress" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="telephone" Type="varchar" MaxLength="45" />
+    <Property Name="email" Type="varchar" MaxLength="85" Nullable="false" />
+  </EntityType>
+  <Association Name="AddressCountry">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="Address" Type="Self.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="idCountry" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="idCountry" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientAddress">
+    <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="idAddress" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="idAddress" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientSchool">
+    <End Role="School" Type="Self.School" Multiplicity="0..1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="School">
+        <PropertyRef Name="idSchool" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="idSchool" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ComponentForProduct">
+    <End Role="Component" Type="Self.Component" Multiplicity="1" />
+    <End Role="ProductComponents" Type="Self.ProductComponents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Component">
+        <PropertyRef Name="idComponent" />
+      </Principal>
+      <Dependent Role="ProductComponents">
+        <PropertyRef Name="idComponent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ComponentForStock">
+    <End Role="Component" Type="Self.Component" Multiplicity="1" />
+    <End Role="StockComponent" Type="Self.StockComponent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Component">
+        <PropertyRef Name="idComponent" />
+      </Principal>
+      <Dependent Role="StockComponent">
+        <PropertyRef Name="idComponent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeAddress">
+    <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="idAddress" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="idAddress" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ExpenseByEmployee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Expense" Type="Self.Expense" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="idEmployee" />
+      </Principal>
+      <Dependent Role="Expense">
+        <PropertyRef Name="idEmployee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="idCountry">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="School" Type="Self.School" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="idCountry" />
+      </Principal>
+      <Dependent Role="School">
+        <PropertyRef Name="idCountry" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="InvoiceClient">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="idClient" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="idClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductFromComponents">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductComponents" Type="Self.ProductComponents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="idProduct" />
+      </Principal>
+      <Dependent Role="ProductComponents">
+        <PropertyRef Name="idProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SaleByEmployee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="idEmployee" />
+      </Principal>
+      <Dependent Role="SaleOrder">
+        <PropertyRef Name="idEmployee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SaleForStock">
+    <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="0..1" />
+    <End Role="StockProduct" Type="Self.StockProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SaleOrder">
+        <PropertyRef Name="idSaleOrder" />
+      </Principal>
+      <Dependent Role="StockProduct">
+        <PropertyRef Name="idSaleOrder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SaleInvoice">
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="1" />
+    <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoice">
+        <PropertyRef Name="idInvoice" />
+      </Principal>
+      <Dependent Role="SaleOrder">
+        <PropertyRef Name="idInvoice" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StockComponentByVendor">
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="1" />
+    <End Role="StockComponent" Type="Self.StockComponent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor">
+        <PropertyRef Name="idVendor" />
+      </Principal>
+      <Dependent Role="StockComponent">
+        <PropertyRef Name="idVendor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StockComponentForProductStock">
+    <End Role="StockProduct" Type="Self.StockProduct" Multiplicity="0..1" />
+    <End Role="StockComponent" Type="Self.StockComponent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StockProduct">
+        <PropertyRef Name="idStockProduct" />
+      </Principal>
+      <Dependent Role="StockComponent">
+        <PropertyRef Name="idStockProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StockComponentPurchase">
+    <End Role="Expense" Type="Self.Expense" Multiplicity="1" />
+    <End Role="StockComponent" Type="Self.StockComponent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Expense">
+        <PropertyRef Name="idExpense" />
+      </Principal>
+      <Dependent Role="StockComponent">
+        <PropertyRef Name="idExpense" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StockForProduct">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="StockProduct" Type="Self.StockProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="idProduct" />
+      </Principal>
+      <Dependent Role="StockProduct">
+        <PropertyRef Name="idProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VendorAddress">
+    <End Role="Address" Type="Self.Address" Multiplicity="1" />
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="idAddress" />
+      </Principal>
+      <Dependent Role="Vendor">
+        <PropertyRef Name="idAddress" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ERPModelStoreContainer">
+    <EntitySet Name="Address" EntityType="Self.Address" Schema="erp" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="erp" store:Type="Tables" />
+    <EntitySet Name="Component" EntityType="Self.Component" Schema="erp" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="erp" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="erp" store:Type="Tables" />
+    <EntitySet Name="Expense" EntityType="Self.Expense" Schema="erp" store:Type="Tables" />
+    <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="erp" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="erp" store:Type="Tables" />
+    <EntitySet Name="ProductComponents" EntityType="Self.ProductComponents" Schema="erp" store:Type="Tables" />
+    <EntitySet Name="SaleOrder" EntityType="Self.SaleOrder" Schema="erp" store:Type="Tables" />
+    <EntitySet Name="School" EntityType="Self.School" Schema="erp" store:Type="Tables" />
+    <EntitySet Name="StockComponent" EntityType="Self.StockComponent" Schema="erp" store:Type="Tables" />
+    <EntitySet Name="StockProduct" EntityType="Self.StockProduct" Schema="erp" store:Type="Tables" />
+    <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="erp" store:Type="Tables" />
+    <AssociationSet Name="AddressCountry" Association="Self.AddressCountry">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Address" EntitySet="Address" />
+    </AssociationSet>
+    <AssociationSet Name="ClientAddress" Association="Self.ClientAddress">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="ClientSchool" Association="Self.ClientSchool">
+      <End Role="School" EntitySet="School" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="ComponentForProduct" Association="Self.ComponentForProduct">
+      <End Role="Component" EntitySet="Component" />
+      <End Role="ProductComponents" EntitySet="ProductComponents" />
+    </AssociationSet>
+    <AssociationSet Name="ComponentForStock" Association="Self.ComponentForStock">
+      <End Role="Component" EntitySet="Component" />
+      <End Role="StockComponent" EntitySet="StockComponent" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeAddress" Association="Self.EmployeeAddress">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="ExpenseByEmployee" Association="Self.ExpenseByEmployee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Expense" EntitySet="Expense" />
+    </AssociationSet>
+    <AssociationSet Name="idCountry" Association="Self.idCountry">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="School" EntitySet="School" />
+    </AssociationSet>
+    <AssociationSet Name="InvoiceClient" Association="Self.InvoiceClient">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="ProductFromComponents" Association="Self.ProductFromComponents">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductComponents" EntitySet="ProductComponents" />
+    </AssociationSet>
+    <AssociationSet Name="SaleByEmployee" Association="Self.SaleByEmployee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="SaleOrder" EntitySet="SaleOrder" />
+    </AssociationSet>
+    <AssociationSet Name="SaleForStock" Association="Self.SaleForStock">
+      <End Role="SaleOrder" EntitySet="SaleOrder" />
+      <End Role="StockProduct" EntitySet="StockProduct" />
+    </AssociationSet>
+    <AssociationSet Name="SaleInvoice" Association="Self.SaleInvoice">
+      <End Role="Invoice" EntitySet="Invoice" />
+      <End Role="SaleOrder" EntitySet="SaleOrder" />
+    </AssociationSet>
+    <AssociationSet Name="StockComponentByVendor" Association="Self.StockComponentByVendor">
+      <End Role="Vendor" EntitySet="Vendor" />
+      <End Role="StockComponent" EntitySet="StockComponent" />
+    </AssociationSet>
+    <AssociationSet Name="StockComponentForProductStock" Association="Self.StockComponentForProductStock">
+      <End Role="StockProduct" EntitySet="StockProduct" />
+      <End Role="StockComponent" EntitySet="StockComponent" />
+    </AssociationSet>
+    <AssociationSet Name="StockComponentPurchase" Association="Self.StockComponentPurchase">
+      <End Role="Expense" EntitySet="Expense" />
+      <End Role="StockComponent" EntitySet="StockComponent" />
+    </AssociationSet>
+    <AssociationSet Name="StockForProduct" Association="Self.StockForProduct">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="StockProduct" EntitySet="StockProduct" />
+    </AssociationSet>
+    <AssociationSet Name="VendorAddress" Association="Self.VendorAddress">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Vendor" EntitySet="Vendor" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

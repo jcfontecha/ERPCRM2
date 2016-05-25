@@ -1,0 +1,76 @@
+﻿<Window x:Class="MVVM_ERP.Views.EditStockProductView"
+        x:Name="Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM_ERP.Views"
+        xmlns:vm="clr-namespace:MVVM_ERP.ViewModels"
+        mc:Ignorable="d"
+        Title="EditProductView" Height="400" Width="463">
+    <Window.Resources>
+        <vm:EditStockProductViewModel x:Key="editStockProductViewModel" />
+    </Window.Resources>
+    <Grid x:Name="mainGrid" DataContext="{StaticResource editStockProductViewModel}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="1" Header="Edit product details" Margin="5">
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*" />
+                    <ColumnDefinition Width="0.7*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="68" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <!-- Key -->
+                <Label Grid.Row="0" Content="Key:" HorizontalContentAlignment="Right" />
+                <TextBox Grid.Row="0" Grid.Column="1" Margin="0,2" VerticalContentAlignment="Center"
+                         Text="{Binding StockProduct.Product.key}" IsEnabled="False"/>
+                <!-- Description -->
+                <Label Grid.Row="1" Content="Description:" HorizontalContentAlignment="Right" />
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="0,2" VerticalContentAlignment="Center" 
+                         Text="{Binding StockProduct.Product.description}" IsEnabled="False"/>
+                <!-- Warehouse -->
+                <Label Grid.Row="2" Content="Warehouse:" HorizontalContentAlignment="Right" />
+                <TextBox Grid.Row="2" Grid.Column="1" Margin="0,2" VerticalContentAlignment="Center" 
+                         Text="{Binding StockProduct.warehouse}"/>
+                <!-- Shelf -->
+                <Label Grid.Row="3" Content="Shelf:" HorizontalContentAlignment="Right" />
+                <TextBox Grid.Row="3" Grid.Column="1" Margin="0,2" VerticalContentAlignment="Center" 
+                         Text="{Binding StockProduct.shelf}"/>
+                <!-- Drawer -->
+                <Label Grid.Row="4" Content="Drawer:" HorizontalContentAlignment="Right" />
+                <TextBox Grid.Row="4" Grid.Column="1" Margin="0,2" VerticalContentAlignment="Center" 
+                         Text="{Binding StockProduct.drawer}"/>
+                <!-- Expiration Date -->
+                <Label Grid.Row="5" Content="Expiration Date:" HorizontalContentAlignment="Right" />
+                <DatePicker Grid.Row="5" Grid.Column="1" Margin="0,2" VerticalContentAlignment="Center" 
+                         SelectedDate="{Binding StockProduct.expirationDate}"/>
+                <!-- Components -->
+                <Label Grid.Row="6" Content="Components:" HorizontalContentAlignment="Right" />
+                <ListBox Grid.Row="6" Grid.Column="1" ItemsSource="{Binding StockProduct.StockComponents, Mode=OneWay}"
+                         DisplayMemberPath="Component.description" Margin="0,0,0,5" />
+            </Grid>
+        </GroupBox>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" FlowDirection="RightToLeft" Margin="10,0">
+            <Button Content="Save" Command="{Binding SaveChangesCommand}" Width="90"
+                    CommandParameter="{Binding ElementName=Window}"/>
+            <Separator Width="5" Visibility="Hidden" />
+            <Button Content="Close" Command="{Binding CloseCommand}" Width="90" 
+                    CommandParameter="{Binding ElementName=Window}"/>
+        </StackPanel>
+    </Grid>
+</Window>

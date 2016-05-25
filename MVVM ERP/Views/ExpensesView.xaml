@@ -1,0 +1,91 @@
+﻿<Window x:Class="MVVM_ERP.Views.ExpensesView"
+        WindowState="Maximized"
+        x:Name="Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM_ERP.Views"
+        xmlns:vm="clr-namespace:MVVM_ERP.ViewModels"
+        mc:Ignorable="d"
+        Title="ExpensesView" Height="600" Width="600">
+    <Window.Resources>
+        <vm:ExpensesViewModel x:Key="expensesViewModel" />
+    </Window.Resources>
+    <GroupBox Header="Expenses" Margin="5" MaxWidth="800">
+        <Grid x:Name="mainGrid" DataContext="{StaticResource expensesViewModel}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10,2">
+                    <Button Content="Add" Command="{Binding AddNewItemCommand}" Width="60" />
+                    <Separator Visibility="Hidden" Width="10" />
+                    <Button Content="Edit" Command="{Binding EditSelectedItemCommand}" Width="60"/>
+                    <Separator Visibility="Hidden" Width="10" />
+                    <Button Content="Delete" Command="{Binding DeleteSelectedItemCommand}" Width="60"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" FlowDirection="RightToLeft" Margin="10,3">
+                    <TextBox Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Left"
+                         VerticalContentAlignment="Center" Width="120" FlowDirection="LeftToRight"/>
+                    <Label Content="Search:" FlowDirection="LeftToRight"/>
+                </StackPanel>
+
+            </Grid>
+            <DataGrid Grid.Row="2" Margin="10" AutoGenerateColumns="False" RowHeaderWidth="0" 
+                  ItemsSource="{Binding Expenses}" IsReadOnly="True" SelectedItem="{Binding SelectedExpense}" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Concept" Width="0.5*" Binding="{Binding concept}"/>
+                    <DataGridTextColumn Header="Amount" Width="0.25*" Binding="{Binding amount}"/>
+                    <DataGridTextColumn Header="Date" Width="0.25*" Binding="{Binding date}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <GroupBox Header="Details" Margin="5" Grid.Row="3" DataContext="{Binding SelectedExpense}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.3*" />
+                        <ColumnDefinition Width="0.7*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25" />
+                        <RowDefinition Height="25" />
+                        <RowDefinition Height="25" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <!--Name-->
+                    <Label Grid.Row="0" Content="Amount:" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+                    <Label Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" Content="{Binding amount}" />
+                    <!--Last Name-->
+                    <!--Country-->
+                    <Label Grid.Row="1" Content="Date:" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+                    <Label Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" Content="{Binding date}" />
+                    <!--City-->
+                    <Label Grid.Row="2" Content="Concept:" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+                    <Label Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" Content="{Binding concept}" />
+                    <!--School-->
+                    <Label Grid.Row="3" Content="Purchases:" HorizontalContentAlignment="Right"
+                       VerticalContentAlignment="Top"/>
+                    <ListBox Grid.Row="3" Grid.Column="1" Margin="3" ItemsSource="{Binding StockComponents}"
+                          DisplayMemberPath="Component.description" />
+                </Grid>
+            </GroupBox>
+            <StackPanel Grid.Row="4" Orientation="Horizontal" FlowDirection="RightToLeft" Margin="10,0">
+
+                <Button Content="Save" Command="{Binding SaveChangesCommand}" Width="90"
+                    CommandParameter="{Binding ElementName=Window}"/>
+                <Separator Width="5" Visibility="Hidden" />
+                <Button Content="Close" Command="{Binding CloseCommand}" Width="90" 
+                    CommandParameter="{Binding ElementName=Window}"/>
+            </StackPanel>
+        </Grid>
+    </GroupBox>
+</Window>

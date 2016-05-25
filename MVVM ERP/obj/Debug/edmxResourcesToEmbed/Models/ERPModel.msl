@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ERPModelStoreContainer" CdmEntityContainer="ERPContext">
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="ERPModel.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="idAddress" ColumnName="idAddress" />
+          <ScalarProperty Name="line1" ColumnName="line1" />
+          <ScalarProperty Name="line2" ColumnName="line2" />
+          <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="idCountry" ColumnName="idCountry" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="ERPModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="idClient" ColumnName="idClient" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="idAddress" ColumnName="idAddress" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="birthDate" ColumnName="birthDate" />
+          <ScalarProperty Name="idSchool" ColumnName="idSchool" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Components">
+      <EntityTypeMapping TypeName="ERPModel.Component">
+        <MappingFragment StoreEntitySet="Component">
+          <ScalarProperty Name="idComponent" ColumnName="idComponent" />
+          <ScalarProperty Name="key" ColumnName="key" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="ERPModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="idCountry" ColumnName="idCountry" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="ERPModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="idAddress" ColumnName="idAddress" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="passw" ColumnName="passw" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Expenses">
+      <EntityTypeMapping TypeName="ERPModel.Expense">
+        <MappingFragment StoreEntitySet="Expense">
+          <ScalarProperty Name="idExpense" ColumnName="idExpense" />
+          <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="concept" ColumnName="concept" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Invoices">
+      <EntityTypeMapping TypeName="ERPModel.Invoice">
+        <MappingFragment StoreEntitySet="Invoice">
+          <ScalarProperty Name="idInvoice" ColumnName="idInvoice" />
+          <ScalarProperty Name="idClient" ColumnName="idClient" />
+          <ScalarProperty Name="tax" ColumnName="tax" />
+          <ScalarProperty Name="finalPrice" ColumnName="finalPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="ERPModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="key" ColumnName="key" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="unitPrice" ColumnName="unitPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SaleOrders">
+      <EntityTypeMapping TypeName="ERPModel.SaleOrder">
+        <MappingFragment StoreEntitySet="SaleOrder">
+          <ScalarProperty Name="idSaleOrder" ColumnName="idSaleOrder" />
+          <ScalarProperty Name="idInvoice" ColumnName="idInvoice" />
+          <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schools">
+      <EntityTypeMapping TypeName="ERPModel.School">
+        <MappingFragment StoreEntitySet="School">
+          <ScalarProperty Name="idSchool" ColumnName="idSchool" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="idCountry" ColumnName="idCountry" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StockComponents">
+      <EntityTypeMapping TypeName="ERPModel.StockComponent">
+        <MappingFragment StoreEntitySet="StockComponent">
+          <ScalarProperty Name="idStockComponent" ColumnName="idStockComponent" />
+          <ScalarProperty Name="idComponent" ColumnName="idComponent" />
+          <ScalarProperty Name="idExpense" ColumnName="idExpense" />
+          <ScalarProperty Name="idVendor" ColumnName="idVendor" />
+          <ScalarProperty Name="idStockProduct" ColumnName="idStockProduct" />
+          <ScalarProperty Name="warehouse" ColumnName="warehouse" />
+          <ScalarProperty Name="shelf" ColumnName="shelf" />
+          <ScalarProperty Name="drawer" ColumnName="drawer" />
+          <ScalarProperty Name="expirationDate" ColumnName="expirationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StockProducts">
+      <EntityTypeMapping TypeName="ERPModel.StockProduct">
+        <MappingFragment StoreEntitySet="StockProduct">
+          <ScalarProperty Name="idStockProduct" ColumnName="idStockProduct" />
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="idSaleOrder" ColumnName="idSaleOrder" />
+          <ScalarProperty Name="expirationDate" ColumnName="expirationDate" />
+          <ScalarProperty Name="warehouse" ColumnName="warehouse" />
+          <ScalarProperty Name="shelf" ColumnName="shelf" />
+          <ScalarProperty Name="drawer" ColumnName="drawer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendors">
+      <EntityTypeMapping TypeName="ERPModel.Vendor">
+        <MappingFragment StoreEntitySet="Vendor">
+          <ScalarProperty Name="idVendor" ColumnName="idVendor" />
+          <ScalarProperty Name="idAddress" ColumnName="idAddress" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ProductComponents" TypeName="ERPModel.ProductComponents" StoreEntitySet="ProductComponents">
+      <EndProperty Name="Component">
+        <ScalarProperty Name="idComponent" ColumnName="idComponent" />
+      </EndProperty>
+      <EndProperty Name="Product">
+        <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

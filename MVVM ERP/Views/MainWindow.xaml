@@ -1,0 +1,111 @@
+﻿<Window x:Class="MVVM_ERP.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM_ERP.Views"
+        xmlns:vm="clr-namespace:MVVM_ERP.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="750">
+    <Window.Resources>
+        <vm:MainViewModel x:Key="mainViewModel" />
+    </Window.Resources>
+    <Grid DataContext="{StaticResource mainViewModel}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu x:Name="menu">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Edit Countries..." Command="{Binding EditCountriesCommand}" />
+                <MenuItem Header="_Edit Schools..." Command="{Binding EditSchoolsCommand}" />
+            </MenuItem>
+        </Menu>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.25*" />
+                <ColumnDefinition Width="0.25*" />
+                <ColumnDefinition Width="0.25*" />
+                <ColumnDefinition Width="0.25*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="140"/>
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="0.5*" />
+            </Grid.RowDefinitions>
+            <Label Grid.ColumnSpan="4" Content="Ollivander's ERP" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="40" />
+            <GroupBox Header="Clients" Margin="10" Grid.Row="1">
+                <StackPanel Margin="3">
+                    <TextBlock TextWrapping="Wrap">
+                        Allows the user to manage Clients and their data.
+                    </TextBlock>
+                    <Separator Height="10" Visibility="Hidden" />
+                    <Button Content="Clients Module" Command="{Binding LaunchClientsModuleCommand}" Height="25"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Grid.Row="1" Grid.Column="1" Header="Products" Margin="10">
+                <StackPanel Margin="3">
+                    <TextBlock TextWrapping="Wrap">
+                        Allows the user to manage the product catalog.
+                    </TextBlock>
+                    <Separator Height="10" Visibility="Hidden" />
+                    <Button Content="Products Module" Command="{Binding LaunchProductsModuleCommand}" Height="25"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Grid.Row="1" Grid.Column="2" Header="Components" Margin="10">
+                <StackPanel Margin="3">
+                    <TextBlock TextWrapping="Wrap">
+                        Allows the user to manage the components required.
+                    </TextBlock>
+                    <Separator Height="10" Visibility="Hidden" />
+                    <Button Content="Components Module" Command="{Binding LaunchComponentsModuleCommand}" Height="25"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Grid.Row="1" Grid.Column="3" Header="Sales" Margin="10">
+                <StackPanel Margin="3">
+                    <TextBlock TextWrapping="Wrap">
+                        Allows the user to manage sales and get reports on them.
+                    </TextBlock>
+                    <Separator Height="10" Visibility="Hidden" />
+                    <Button Content="Sales Module" Command="{Binding LaunchSalesModuleCommand}" Height="25"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Grid.Row="2" Grid.Column="0" Header="Employees" Margin="10">
+                <StackPanel Margin="3">
+                    <TextBlock TextWrapping="Wrap">
+                        Allows the user to manage the system employees.
+                    </TextBlock>
+                    <Separator Height="10" Visibility="Hidden" />
+                    <Button Content="Employees Module" Command="{Binding LaunchEmployeesModuleCommand}" Height="25"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Grid.Row="2" Grid.Column="1" Header="Expenses" Margin="10">
+                <StackPanel Margin="3">
+                    <TextBlock TextWrapping="Wrap">
+                        Allows the user to manage Ollivander's expenses.
+                    </TextBlock>
+                    <Separator Height="10" Visibility="Hidden" />
+                    <Button Content="Expenses Module" Command="{Binding LaunchExpensesModuleCommand}" Height="25"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Grid.Row="2" Grid.Column="2" Header="Inventory" Margin="10">
+                <StackPanel Margin="3">
+                    <TextBlock TextWrapping="Wrap">
+                        Allows the user to manage stock items and craft products.
+                    </TextBlock>
+                    <Separator Height="10" Visibility="Hidden" />
+                    <Button Content="Inventory Module" Command="{Binding LaunchInventoryModuleCommand}" Height="25"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Grid.Row="2" Grid.Column="3" Header="CRM" Margin="10">
+                <StackPanel Margin="3">
+                    <TextBlock TextWrapping="Wrap">
+                        Allows the user to manage CRM operations.
+                    </TextBlock>
+                    <Separator Height="10" Visibility="Hidden" />
+                    <Button Content="CRM" Command="{Binding LaunchCRMCommand}" Height="25"/>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+    </Grid>
+</Window>
